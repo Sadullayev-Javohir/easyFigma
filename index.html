@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+        header {
+            background: #74C69D;
+            line-height: 80px;
+            height: 80px;
+            padding: 0 100px;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 30px;
+            font-weight: 900;
+            color: white;
+        }
+        .logo img {
+            width: 50px;
+        }
+        #menu {
+            position: absolute;
+            font-size: 38px;
+            color: white;
+            right: 30px;
+            display: none;
+            cursor: pointer;
+        }
+        #check {
+            display: none;
+        }
+        header nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        header nav ul li a {
+            font-size: 19px;
+            color: white;
+            font-weight: 900;
+            border: 2px solid transparent;
+            transition: 1s all;
+            padding: 8px 18px;
+        }
+        header nav ul li a:hover {
+            color: white;
+            border: 2px solid white;
+        }
+        @media(max-width: 1024px) {
+            #menu {
+                display: block;
+                top: 20px;
+                z-index: 1000;
+            }
+            header nav {
+                align-items: start;
+            }
+            header nav ul {
+                flex-direction: column;
+                width: 100%;
+                height: 100vh;
+                background: #74C69D;
+                position: fixed;
+                top: 0;
+                left: 100%;
+                text-align: center;
+                transition: 1s all;
+                z-index: 100;
+            }
+            header nav ul li a {
+                line-height: 120px;
+            }
+            #check:checked ~ ul {
+                left: 0;
+            }
+        }
+
+        /* column */
+        section {
+            padding: 0 100px;
+        }
+        .text {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .text h6 {
+            text-transform: uppercase;
+            color: #74C69D;
+            font-weight: 900;
+            font-size: 19px;
+            letter-spacing: 10px;
+        }
+        .text h1 {
+            font-size: 40px;
+            margin: 10px 0;
+        }
+        .text p {
+            font-size: 17px;
+        }
+
+        .column {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .column .col {
+            /* border: 1px solid black; */
+            padding: 20px;
+            box-shadow: 0 0 4px 2px rgb(201, 201, 201);
+            border-radius: 10px;
+            transition: 1s all;
+            cursor: pointer;
+            width: calc((100% - 100px) / 3);
+        }
+        .col:hover {
+            background: #417059;
+            color: white;
+            box-shadow: 0 0 14px 2px rgb(201, 201, 201);
+
+        }
+    
+        .column .col h6 {
+            text-align: center;
+            font-size: 18px;
+        }
+        .col h1 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        .col h1 span {
+            font-size: 16px;
+            opacity: 0.5;
+        }
+        .col ul {
+            margin: 30px 0;
+        }
+        .col ul li {
+            font-size: 20px;
+            padding: 10px 0;
+        }
+        .col ul li i {
+            color: #74C69D;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .col button {
+            background: black;
+            color: white;
+            padding: 13px 25px;
+            font-size: 16px;
+            border: 2px solid transparent;
+            transition: 1s all;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .col button:hover {
+            background: white;
+            border: 2px solid black;
+            color: black;
+            border-radius: 0;
+        }
+        
+        @media(max-width: 1024px) {
+            .column .col {
+                width: calc((100% - 100px) / 2);
+            }
+        }
+
+        @media(max-width: 768px) {
+            section {
+                padding: 0 0px;
+            }
+            .column {
+                justify-content: center;
+            }
+            .column .col {
+                width: calc((100% - 100px) / 1);
+            }
+        }
+
+        /* footer */
+        footer {
+            margin-top: 50px;
+            padding: 0 100px;
+            height: 80px;
+            /* line-height: 80px; */
+            background: #74C69D;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+        .icons i {
+            font-size: 25px;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border: 2px solid transparent;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 0 12px 2px rgb(159, 198, 170);
+            transition: 1s all;
+            cursor: pointer;
+
+        }
+        .icons i:hover {
+            background: white;
+            border: 2px solid black;
+            color: black;
+        }
+        footer p {
+            font-weight: 900;
+            font-size: 19px;
+        }
+
+        @media(max-width: 768px) {
+            footer {
+                padding: 0 20px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="./logo.png" alt=""> Start</div>
+            <input type="checkbox" id="check">
+            <label for="check">
+                <i id="menu" class='bx bx-menu-alt-right' ></i>
+            </label>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- section -->
+    <section>
+        <div class="text">
+            <h6>Plans</h6>
+            <h1>Our Services</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="column">
+            <div class="col">
+                <h6>Basic</h6>
+                <h1>$100 <span>/month</span></h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, libero minima ducimus, quidem recusandae unde voluptatem iure vitae aut, illum accusamus explicabo perferendis atque doloribus nisi! Saepe ullam soluta tempora!</p>
+                <ul>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                </ul>
+                <center>
+                    <button>Learn More</button>
+                </center>
+            </div>
+            <div class="col">
+                <h6>Plus</h6>
+                <h1>$250 <span>/month</span></h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, libero minima ducimus, quidem recusandae unde voluptatem iure vitae aut, illum accusamus explicabo perferendis atque doloribus nisi! Saepe ullam soluta tempora!</p>
+                <ul>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                </ul>
+                <center>
+                    <button>Learn More</button>
+                </center>
+            </div>
+            <div class="col">
+                <h6>Pro</h6>
+                <h1>$400 <span>/month</span></h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, libero minima ducimus, quidem recusandae unde voluptatem iure vitae aut, illum accusamus explicabo perferendis atque doloribus nisi! Saepe ullam soluta tempora!</p>
+                <ul>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                    <li><i class='bx bx-check' ></i>Lorem ipsum dolor sit.</li>
+                </ul>
+                <center>
+                    <button>Learn More</button>
+                </center>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        <div class="icons">
+            <i class='bx bxl-facebook' ></i>
+            <i class='bx bxl-instagram' ></i>
+            <i class='bx bxl-twitter' ></i>
+            <i class='bx bxl-pinterest-alt' ></i>
+            <i class='bx bxl-tiktok' ></i>
+            <i class='bx bxl-whatsapp' ></i>
+            <i class='bx bxl-youtube' ></i>
+        </div>
+        <p>© Start, 2022. All rights reserved.</p>
+    </footer>
+</body>
+</html>
